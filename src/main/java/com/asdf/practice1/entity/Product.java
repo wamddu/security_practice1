@@ -1,9 +1,6 @@
 package com.asdf.practice1.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,11 +10,11 @@ import lombok.NonNull;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class product {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @NonNull
     private String name;
@@ -26,5 +23,10 @@ public class product {
     private String price;
 
     @NonNull
-    private String currency;
+    @Enumerated(EnumType.STRING)
+    private Currency currency;
+
+    public enum Currency {
+        USD, GBP, EUR
+    }
 }

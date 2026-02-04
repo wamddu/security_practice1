@@ -7,22 +7,20 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 @Entity
-@Table(name = "user")
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class user {
+@AllArgsConstructor
+public class Authority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @NonNull
-    private String username;
+    private String name;
 
     @NonNull
-    private String password;
-
-    @NonNull
-    private String algorithm;
+    @JoinColumn(name = "user")
+    @ManyToOne
+    private User user;
 }
